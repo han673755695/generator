@@ -1,10 +1,11 @@
 package com.yuanhang.generator.entry;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.*;
 
 @Table(name = "pms_sku_stock")
-public class PmsSkuStock {
+public class PmsSkuStock implements Serializable {
     @Id
     @GeneratedValue(generator = "JDBC")
     private Long id;
@@ -61,6 +62,8 @@ public class PmsSkuStock {
      */
     @Column(name = "lock_stock")
     private Integer lockStock;
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * @return id
@@ -274,5 +277,29 @@ public class PmsSkuStock {
      */
     public void setLockStock(Integer lockStock) {
         this.lockStock = lockStock;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", productId=").append(productId);
+        sb.append(", skuCode=").append(skuCode);
+        sb.append(", price=").append(price);
+        sb.append(", stock=").append(stock);
+        sb.append(", lowStock=").append(lowStock);
+        sb.append(", sp1=").append(sp1);
+        sb.append(", sp2=").append(sp2);
+        sb.append(", sp3=").append(sp3);
+        sb.append(", pic=").append(pic);
+        sb.append(", sale=").append(sale);
+        sb.append(", promotionPrice=").append(promotionPrice);
+        sb.append(", lockStock=").append(lockStock);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
 }
